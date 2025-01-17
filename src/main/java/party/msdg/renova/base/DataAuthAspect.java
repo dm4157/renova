@@ -15,7 +15,6 @@ import java.lang.reflect.Method;
 @Component
 public class DataAuthAspect {
 
-
     private static final String CUSER_METHOD = "getCuser";
 
     @Around("@annotation(DataAuth)")
