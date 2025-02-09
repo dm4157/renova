@@ -6,9 +6,9 @@ server:
 spring.datasource:
   name: renova
   driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/work
-  username: root
-  password: 123
+  url: jdbc:mysql://localhost:2881/renova?serverTimezone=UTC
+  username: root@libra
+  password: Libra#00
 
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:

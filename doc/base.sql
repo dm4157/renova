@@ -1,4 +1,4 @@
-use work;
+use renova;
 
 drop table if exists t_uc_user;
 create table t_uc_user

@@ -13,18 +13,18 @@ import party.msdg.renova.base.work.WorkCode;
 @Configuration
 class MyWebMvcConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new SaInterceptor(handle -> {
-                    try {
-                        StpUtil.checkLogin();
-                    } catch (NotLoginException nle) {
-                        throw Work.ex().just(WorkCode.NOT_LOGIN);
-                    }
-                }))
-                .addPathPatterns("/**")
-                .excludePathPatterns("/api/uc/**", "/error");
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new SaInterceptor(handle -> {
+//                    try {
+//                        StpUtil.checkLogin();
+//                    } catch (NotLoginException nle) {
+//                        throw Work.ex().just(WorkCode.NOT_LOGIN);
+//                    }
+//                }))
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/api/uc/**", "/error");
+//    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
