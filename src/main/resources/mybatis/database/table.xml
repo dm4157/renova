@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="party.msdg.renova.database.table.TableDao">
+    <insert id="add" parameterType="Table" useGeneratedKeys="true" keyProperty="id">
+        insert into t_db_table(name, sourceId, remark, cuser)
+        values(#{name}, #{sourceId}, #{remark}, #{cuser})
+    </insert>
+
+    <insert id="batchInsert" parameterType="Table">
+        insert into t_db_table(name, sourceId, remark, cuser)
+        values
+            <foreach collection="tables" item="tab" separator=",">
+                (#{tab.name}, #{sourceId}, #{tab.remark}, #{cuser})
+            </foreach>
+    </insert>
+
+    <delete id="truncate">
+        truncate t_db_table;
+    </delete>
+</mapper>

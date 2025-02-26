@@ -17,6 +17,9 @@ public class DataAuthAspect {
 
     private static final String CUSER_METHOD = "getCuser";
 
+    /**
+     * 校验数据归属与当前登录人是否一致
+     */
     @Around("@annotation(DataAuth)")
     public Object dataAuthCheck(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed = joinPoint.proceed();

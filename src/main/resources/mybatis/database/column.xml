@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="party.msdg.renova.database.column.ColumnDao">
+
+    <insert id="batchInsert" parameterType="Column">
+        insert into t_db_column(name, sourceId, tableName, type, bit, length, scale, pk, notNull, defValue, remark, cuser)
+        values
+            <foreach collection="columns" item="col" separator=",">
+            (#{col.name}, #{sourceId}, #{col.tableName}, #{col.type}, #{col.bit}, #{col.length}, #{col.scale}, #{col.pk}, #{col.notNull}, #{col.defValue}, #{col.remark}, #{cuser})
+            </foreach>
+    </insert>
+
+    <delete id="truncate">
+        truncate t_db_column;
+    </delete>
+</mapper>

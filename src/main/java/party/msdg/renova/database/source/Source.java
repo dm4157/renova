@@ -16,19 +16,53 @@ import java.util.Date;
 @Data
 public class Source {
     
-    private static final String TYPE_MYSQL = "mysql";
+    public static final String TYPE_MYSQL = "mysql";
 
+    /**
+     * 自增id
+     */
     private int id;
+    /**
+     * 数据源名称（自定义）
+     */
     private String name;
-    
+
+    /**
+     * 数据库类型
+     */
     private String type;
+    /**
+     * 访问地址
+     */
     private String host;
+    /**
+     * 端口
+     */
     private int port;
+
+    /**
+     * 数据库名称
+     */
     private String dbname;
+
+    /**
+     * 账号用户
+     */
     private String user;
+    /**
+     * 访问密码
+     */
     private String password;
+
+    /**
+     * 备注
+     */
     private String remark;
-    
+
+
+    /**
+     * 常规信息
+     */
     private int cuser;
     private int muser;
     private Date ctime;
@@ -43,8 +77,7 @@ public class Source {
         ds.setDriverClassName(driver());
         return ds;
     }
-    
-    
+
     public String url() {
         StringBuilder sb = new StringBuilder();
         if (TYPE_MYSQL.equals(type)) {

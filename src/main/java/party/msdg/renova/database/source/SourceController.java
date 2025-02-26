@@ -16,7 +16,7 @@ public class SourceController {
     
     @GetMapping("/v1/all")
     public List<Source> sources() {
-        return sourceService.allSources(StpUtil.getLoginId(0));
+        return sourceService.all(StpUtil.getLoginId(0));
     }
     
     @GetMapping("/v1/one/{id}")

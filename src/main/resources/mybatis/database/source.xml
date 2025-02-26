@@ -11,7 +11,9 @@
 
     <select id="all" parameterType="int" resultType="Source">
         <include refid="selectAll"/>
+        <if test="userId > 0">
         where cuser = #{userId}
+        </if>
     </select>
 
     <select id="one" parameterType="int" resultType="Source">
