@@ -26,3 +26,9 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: true
+
+
+## generator
+gen:
+  data-set:
+    root: /Users/story/Documents/gen

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import party.msdg.renova.base.Re;
-import party.msdg.renova.toolkit.LittleTrick;
+import party.msdg.renova.toolkit.Trick;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,12 +36,12 @@ public class WorkExceptionHandler extends ResponseEntityExceptionHandler {
             WorkLog.WorkLogEvent workLog = log.tag("W.E");
 
             // 设置自定义log key
-            if (LittleTrick.notEmpty(wc.getTag())) {
+            if (Trick.notEmpty(wc.getTag())) {
                 workLog.tag(wc.getTag());
             }
 
             // 设置现场信息
-            if (LittleTrick.notEmpty(wc.getScene())) {
+            if (Trick.notEmpty(wc.getScene())) {
                 workLog.scene(wc.getScene());
             }
 
@@ -87,7 +87,7 @@ public class WorkExceptionHandler extends ResponseEntityExceptionHandler {
         // 构造响应内容
         Re<Object> re = new Re<>(
                 wc.getCode().code(),
-                LittleTrick.isEmpty(workEx.getMessage()) ? wc.getCode().text() : workEx.getMessage(),
+                Trick.isEmpty(workEx.getMessage()) ? wc.getCode().text() : workEx.getMessage(),
                 wc.getScene(),
                 wc.getData());
         return new ResponseEntity<>(re, new HttpHeaders(), wc.getStatus());

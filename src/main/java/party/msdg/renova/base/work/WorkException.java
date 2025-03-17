@@ -2,7 +2,7 @@ package party.msdg.renova.base.work;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import party.msdg.renova.toolkit.LittleTrick;
+import party.msdg.renova.toolkit.Trick;
 
 import static party.msdg.renova.base.work.WorkContext.*;
 
@@ -59,12 +59,12 @@ public class WorkException extends RuntimeException {
          * @return  拼接内容
          */
         public WorkException message(Object...messages) {
-            String message = LittleTrick.buildMsg(messages);
-            if (LittleTrick.isEmpty(message) && null != wc.getCode()) {
+            String message = Trick.build(messages);
+            if (Trick.isEmpty(message) && null != wc.getCode()) {
                 message = wc.getCode().text();
             }
             
-            WorkException we = LittleTrick.isEmpty(message) ? new WorkException() : new WorkException(message);
+            WorkException we = Trick.isEmpty(message) ? new WorkException() : new WorkException(message);
             we.setWc(wc);
             return we;
         }
@@ -107,7 +107,7 @@ public class WorkException extends RuntimeException {
          * @return  拼接内容
          */
         public WorkExceptionBuilder scene(Object...messages) {
-            this.wc.setScene(LittleTrick.buildMsg(messages));
+            this.wc.setScene(Trick.build(messages));
             return this;
         }
     

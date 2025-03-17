@@ -1,7 +1,7 @@
 package party.msdg.renova.base.work;
 
 import org.springframework.http.HttpStatus;
-import party.msdg.renova.toolkit.LittleTrick;
+import party.msdg.renova.toolkit.Trick;
 
 import static party.msdg.renova.base.work.WorkContext.*;
 
@@ -38,14 +38,14 @@ public class WorkAssert {
      * 逻辑非空判断
      */
     public static WorkAssertInfoBuilder notEmpty(Object data) {
-        return isTrue(LittleTrick.notEmpty(data));
+        return isTrue(Trick.notEmpty(data));
     }
 
     /**
      * 逻辑空判断
      */
     public static WorkAssertInfoBuilder isEmpty(Object data) {
-        return isTrue(LittleTrick.isEmpty(data));
+        return isTrue(Trick.isEmpty(data));
     }
 
     /**
@@ -163,7 +163,7 @@ public class WorkAssert {
      * 判断 字符串参数最大长度不超过 maxLen
      */
     public static WorkAssertInfoBuilder lenLess(String param, int maxLen) {
-        return isTrue(LittleTrick.isEmpty(param) || param.length() <= maxLen);
+        return isTrue(Trick.isEmpty(param) || param.length() <= maxLen);
     }
     
     /**
@@ -216,7 +216,7 @@ public class WorkAssert {
         }
 
         public WorkAssertInfoBuilder scene(Object... messages) {
-            this.wc.setScene(LittleTrick.buildMsg(messages));
+            this.wc.setScene(Trick.build(messages));
             return this;
         }
         

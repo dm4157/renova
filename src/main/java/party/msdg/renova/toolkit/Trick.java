@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by msdg on 2018/8/12.
  * Look, there is a moon.
  */
-public class LittleTrick {
+public class Trick {
 
     public static boolean notEmpty(Object target) {
         return ! isEmpty(target);
@@ -25,15 +25,15 @@ public class LittleTrick {
         if (null == target) return true;
 
         if (target instanceof String) {
-            return 0 == ((String) target).length();
+            return ((String) target).isEmpty();
         }
 
         if (target instanceof Collection) {
-            return 0  == ((Collection) target).size();
+            return ((Collection) target).isEmpty();
         }
 
         if (target instanceof Map) {
-            return 0 == ((Map) target).size();
+            return ((Map) target).isEmpty();
         }
 
         if (target.getClass().isArray()) {
@@ -94,14 +94,14 @@ public class LittleTrick {
         Object[] finalMessage = new Object[message.length + 1];
         finalMessage[0] = messageTemp;
         
-        if (LittleTrick.notEmpty(message)) {
+        if (Trick.notEmpty(message)) {
             System.arraycopy(message, 0, finalMessage, 1, message.length);
         }
         
-        return buildMsg(finalMessage);
+        return build(finalMessage);
     }
     
-    public static String buildMsg(Object...message) {
+    public static String build(Object...message) {
         String template = message.length == 0 || message[0] == null ? "" : message[0].toString();
         if (1 == message.length) {
             return template;
@@ -128,7 +128,7 @@ public class LittleTrick {
     }
 
     public static String subStr(String val, int maxLex) {
-        if (LittleTrick.isEmpty(val) || val.length() <= maxLex) {
+        if (Trick.isEmpty(val) || val.length() <= maxLex) {
             return val;
         } else {
             return val.substring(0, maxLex) + "...";
@@ -136,7 +136,7 @@ public class LittleTrick {
     }
     
     public static String searchKey(String keyword) {
-        if (LittleTrick.isEmpty(keyword)) {
+        if (Trick.isEmpty(keyword)) {
             return null;
         } else {
             return "%" + keyword + "%";

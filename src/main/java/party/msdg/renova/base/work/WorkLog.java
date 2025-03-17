@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import party.msdg.renova.toolkit.LittleTrick;
+import party.msdg.renova.toolkit.Trick;
 
 import static party.msdg.renova.base.work.WorkContext.*;
 
@@ -73,7 +73,7 @@ public class WorkLog {
         }
         
         public WorkLogEvent scene(Object... messages) {
-            this.scene = LittleTrick.buildMsg(messages);
+            this.scene = Trick.build(messages);
             return this;
         }
         
@@ -136,16 +136,16 @@ public class WorkLog {
         
         private String buildMessage(Object...messages) {
             StringBuffer sb = new StringBuffer();
-            if (LittleTrick.notEmpty(tag)) {
+            if (Trick.notEmpty(tag)) {
                 sb.append("#").append(tag).append("#");
             }
             
-            if (LittleTrick.notEmpty(scene)) {
+            if (Trick.notEmpty(scene)) {
                 sb.append(" <").append(scene).append(">");
             }
             
-            String message = LittleTrick.buildMsg(messages);
-            if (LittleTrick.notEmpty(message)) {
+            String message = Trick.build(messages);
+            if (Trick.notEmpty(message)) {
                 sb.append(" 🐳").append(message);
             }
             
