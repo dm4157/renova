@@ -10,4 +10,6 @@ public interface ColumnDao {
     void batchInsert(int sourceId, int cuser, List<Column> columns);
 
     void truncate();
+
+    List<Column> tableColumns(int sourceId, String tableName);
 }

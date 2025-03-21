@@ -90,12 +90,27 @@ drop table if exists t_gen_data_set;
 create table t_gen_data_set
 (
     id       int auto_increment primary key,
-    type     int           not null                  default 1 comment '动静类型。1-静态，2-动态',
-    data     varchar(100)  not null                  default '' comment '静态数据集存储文件名称',
-    sourceId int           not null                  default 0 comment '数据源id',
-    script   varchar(500)  not null                  default '' comment '查询语句',
-    ctime    datetime                                default current_timestamp not null comment '创建时间',
-    mtime    datetime                                default current_timestamp not null on update current_timestamp comment '最新修改时间',
-    cuser    int           not null comment '创建人',
-    muser    int           not null comment '修改人' default 0
-) comment '数据集';
+    type     int          not null                  default 1 comment '动静类型。1-静态，2-动态',
+    data     varchar(100) not null                  default '' comment '静态数据集存储文件名称',
+    sourceId int          not null                  default 0 comment '数据源id',
+    script   varchar(500) not null                  default '' comment '查询语句',
+    ctime    datetime                               default current_timestamp not null comment '创建时间',
+    mtime    datetime                               default current_timestamp not null on update current_timestamp comment '最新修改时间',
+    cuser    int          not null comment '创建人',
+    muser    int          not null comment '修改人' default 0
+) comment '数据集-用于数据选取';
+
+drop table if exists t_gen_task;
+create table t_gen_task
+(
+    id     int auto_increment primary key,
+    name   varchar(200)                       not null comment '任务名称',
+    tableId int                                not null comment '表id',
+    num    int                                not null comment '生成数量',
+    status int                                not null comment '状态，1-待执行，2-执行中，3-执行完成，4-执行失败',
+    remark varchar(500)                       null comment '备注信息',
+    ctime  datetime default current_timestamp not null comment '创建时间',
+    mtime  datetime default current_timestamp not null on update current_timestamp comment '最新修改时间',
+    cuser  int                                not null comment '创建人',
+    muser  int                                not null comment '修改人' default 0
+) comment '生成任务';

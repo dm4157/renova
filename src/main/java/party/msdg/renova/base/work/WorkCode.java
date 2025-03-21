@@ -31,5 +31,9 @@ public record WorkCode(int code, String text) {
     public static WorkCode LOGIN_NOT_MATCH = new WorkCode(1202, "账号或密码不匹配，无法登录");
 
     public static final WorkCode DB_SOURCE_NOT_FOUND = new WorkCode(2000, "数据源未找到。");
+    public static final WorkCode DB_TABLE_NOT_FOUND = new WorkCode(2100, "数据表未找到。");
+    public static final WorkCode DB_TABLE_COLUMN_EMPTY = new WorkCode(2100, "数据表字段列表为空。");
+    public static final WorkCode DB_COLUMN_NOT_FOUND = new WorkCode(2200, "数据表未找到。");
+    public static final WorkCode GEN_TASK_NOT_FOUND = new WorkCode(3000, "生成任务未找到。");
 
 }

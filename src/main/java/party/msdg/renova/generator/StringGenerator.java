@@ -25,13 +25,4 @@ public class StringGenerator extends Generator<String> {
             throw Work.ex().message("不支持的语言类型。{}", args.lang());
         }
     }
-
-    @Override
-    public List<String> next(int num) {
-        List<String> result = new ArrayList<>(num);
-        for (int i = 0; i < num; i++) {
-            result.add(next());
-        }
-        return result;
-    }
 }

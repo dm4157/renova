@@ -15,4 +15,10 @@
     <delete id="truncate">
         truncate t_db_column;
     </delete>
+
+    <select id="tableColumns" parameterType="int" resultType="Column">
+        select id, name, sourceId, tableName, type, bit, length, scale, pk, notNull, defValue, remark, ctime, mtime, cuser, muser
+        from t_db_column
+        where sourceId = #{sourceId} and tableName = #{tableName}
+    </select>
 </mapper>

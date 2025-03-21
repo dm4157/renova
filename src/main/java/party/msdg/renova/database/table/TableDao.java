@@ -12,4 +12,6 @@ public interface TableDao {
     void batchInsert(int sourceId, int cuser, List<Table> tables);
 
     void truncate();
+
+    Table one(int id);
 }

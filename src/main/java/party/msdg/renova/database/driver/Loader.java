@@ -1,10 +1,13 @@
 package party.msdg.renova.database.driver;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import party.msdg.renova.base.work.Work;
+import party.msdg.renova.base.work.WorkAssert;
+import party.msdg.renova.base.work.WorkCode;
 import party.msdg.renova.base.work.WorkLog;
 import party.msdg.renova.database.column.Column;
 import party.msdg.renova.database.column.ColumnService;
@@ -23,6 +26,7 @@ import java.util.List;
  * @summary  数据库加载器
  * @since 2025/2/20 10:37
  */
+@Slf4j
 @Service
 public class Loader {
 

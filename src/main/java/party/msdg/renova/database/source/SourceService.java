@@ -3,9 +3,11 @@ package party.msdg.renova.database.source;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import party.msdg.renova.base.DataAuth;
+import party.msdg.renova.base.work.Work;
 import party.msdg.renova.base.work.WorkCode;
 import party.msdg.renova.base.work.WorkAssert;
 import party.msdg.renova.database.driver.Driver;
+import party.msdg.renova.toolkit.Trick;
 
 import java.util.List;
 
@@ -34,7 +36,6 @@ public class SourceService {
     public Source one(int id) {
         Source source = sourceDao.one(id);
         WorkAssert.notNull(source).scene("id:{}", id).just(WorkCode.DB_SOURCE_NOT_FOUND);
-
         return source;
     }
 
