@@ -1,6 +1,7 @@
 package party.msdg.renova.database.column;
 
 import lombok.Data;
+import party.msdg.renova.mock.value.ValueConfig;
 
 /**
  * 数据表字段信息
@@ -69,4 +70,8 @@ public class Column {
      */
     private String remark;
 
+    /**
+     * 生成器配置
+     */
+    private ValueConfig valueConfig;
 }

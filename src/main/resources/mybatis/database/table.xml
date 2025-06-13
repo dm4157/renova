@@ -25,4 +25,10 @@
         from t_db_table
         where id = #{id}
     </select>
+
+    <select id="oneByName" resultType="Table">
+        select id, name, sourceId, remark, ctime, mtime, cuser, muser
+        from t_db_table
+        where sourceId = #{sourceId} and name = #{name}
+    </select>
 </mapper>

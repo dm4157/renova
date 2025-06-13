@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="party.msdg.renova.mock.value.ValueConfigDao">
+
+    <!--    int batchAdd(int paramType, int paramRoot, List<ValueConfig> configs);-->
+    <insert id="batchAdd">
+        insert into t_mock_value_config (paramId, paramType, paramRoot, genType, generator, genArgs, pick, dataSet,
+        cuser, muser)
+        values
+        <foreach collection="configs" item="con" separator=",">
+            (#{con.paramId}, paramType, paramRoot, #{con.genType}, #{con.generator}, #{con.genArgs}, #{con.pick},
+            #{con.dataSet}, #{con.cuser}, #{con.muser})
+        </foreach>
+    </insert>
+
+    <!--    List<ValueConfig> all(int paramType, int paramRoot);-->
+    <select id="all" resultType="ValueConfig">
+        select id,
+               paramId,
+               paramType,
+               paramRoot,
+               genType,
+               generator,
+               genArgs,
+               pick,
+               dataSet,
+               cuser,
+               muser,
+               ctime,
+               mtime
+        from t_mock_value_config
+        where paramType = #{paramType}
+          and paramRoot = #{paramRoot}
+    </select>
+
+    <!--    int delete(int paramType, int paramRoot);-->
+    <delete id="delete">
+        delete
+        from t_mock_value_config
+        where paramType = #{paramType}
+          and paramRoot = #{paramRoot}
+    </delete>
+
+    <!--    int update(int muser, int paramType, int paramRoot, int paramId,-->
+    <!--    int genType, String generator, String genArgs, int pick, int dataSet);-->
+    <update id="update">
+        UPDATE t_mock_value_config
+        SET
+        <if test="null != genType">
+            genType = #{genType},
+        </if>
+        <if test="null != generator">
+            generator = #{generator},
+        </if>
+        <if test="null != genArgs">
+            genArgs = #{genArgs},
+        </if>
+        <if test="null != pick">
+            pick = #{pick},
+        </if>
+        <if test="null != dataSet">
+            dataSet = #{dataSet},
+        </if>
+        muser = #{muser}
+        WHERE paramId = #{paramId} and paramType = #{parmaType}
+    </update>
+
+</mapper>

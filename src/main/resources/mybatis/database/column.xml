@@ -5,10 +5,10 @@
 <mapper namespace="party.msdg.renova.database.column.ColumnDao">
 
     <insert id="batchInsert" parameterType="Column">
-        insert into t_db_column(name, sourceId, tableName, type, bit, length, scale, pk, notNull, defValue, remark, cuser)
+        insert into t_db_column(name, sourceId, tableName, sort, type, bit, length, scale, pk, notNull, defValue, remark, cuser)
         values
             <foreach collection="columns" item="col" separator=",">
-            (#{col.name}, #{sourceId}, #{col.tableName}, #{col.type}, #{col.bit}, #{col.length}, #{col.scale}, #{col.pk}, #{col.notNull}, #{col.defValue}, #{col.remark}, #{cuser})
+            (#{col.name}, #{sourceId}, #{col.tableName}, #{col.sort}, #{col.type}, #{col.bit}, #{col.length}, #{col.scale}, #{col.pk}, #{col.notNull}, #{col.defValue}, #{col.remark}, #{cuser})
             </foreach>
     </insert>
 

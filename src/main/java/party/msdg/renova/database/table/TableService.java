@@ -28,4 +28,10 @@ public class TableService {
         // 0代表系统本身
         tableDao.batchInsert(sourceId, Codes.SYS_CUSER, tables);
     }
+
+    public Table one(int sourceId, String tableName) {
+        return null;
+    }
+
+    
 }

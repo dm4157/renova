@@ -14,4 +14,6 @@ public interface TableDao {
     void truncate();
 
     Table one(int id);
+
+    Table oneByName(int sourceId, String name);
 }

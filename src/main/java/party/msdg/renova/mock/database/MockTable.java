@@ -1,9 +1,11 @@
-package party.msdg.renova.mock;
+package party.msdg.renova.mock.database;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class GenTask {
+public class MockTable {
     private int id;
     private String name;
     private int tableId;
@@ -18,4 +20,9 @@ public class GenTask {
      */
     private int status;
     private String remark;
+
+    private int cuser;
+    private Date ctime;
+    private int muser;
+    private Date mtime;
 }

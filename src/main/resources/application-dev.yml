@@ -10,6 +10,17 @@ spring.datasource:
   username: root@libra
   password: Libra#00
 
+###redis配置###
+spring.data.redis:
+  host: 127.0.0.1
+  port: 6379
+  timeout: 3s
+  jedis.pool:
+    max-active: 100  # 连接池最大连接数（使用负值表示没有限制）
+    max-wait: 500ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
+    max-idle: 8 # 连接池中的最大空闲连接
+    min-idle: 0 # 连接池中的最小空闲连接
+
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
 sa-token:
   # token 名称（同时也是 cookie 名称）
@@ -32,3 +43,4 @@ sa-token:
 gen:
   data-set:
     root: /Users/story/Documents/gen
+
