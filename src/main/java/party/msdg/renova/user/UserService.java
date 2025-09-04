@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import party.msdg.renova.base.work.WorkAssert;
+import party.msdg.renova.user.model.User;
 
 import static party.msdg.renova.base.work.WorkCode.*;
 
@@ -27,10 +28,10 @@ public class UserService {
         WorkAssert.equalBasic(res, 1).just(REGISTER_FAIL);
     }
     
-    public void doLogin(String account, String password) {
-        User user = userDao.one(account);
+    public void doLogin(User loginUser) {
+        User user = userDao.one(loginUser.getAccount());
         WorkAssert.notNull(user).just(UNREGISTER);
-        WorkAssert.equal(user.getPassword(), password).just(LOGIN_NOT_MATCH);
+        WorkAssert.equal(user.getPassword(), loginUser.getPassword()).just(LOGIN_NOT_MATCH);
         
         StpUtil.login(user.getId());
     }

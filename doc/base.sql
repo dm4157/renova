@@ -37,6 +37,7 @@ create table t_db_table
     id       int auto_increment primary key,
     name     varchar(200)                       not null comment '数据表名称',
     sourceId int                                not null comment '数据源',
+    rows     int                                not null comment '表记录数',
     remark   varchar(500)                       null comment '注释信息',
     ctime    datetime default current_timestamp not null comment '创建时间',
     mtime    datetime default current_timestamp not null on update current_timestamp comment '最新修改时间',

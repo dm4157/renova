@@ -54,6 +54,8 @@ public class Source {
      */
     private String password;
 
+    private int status;
+
     /**
      * 备注
      */

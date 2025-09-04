@@ -1,6 +1,9 @@
 package party.msdg.renova.database.table;
 
 import lombok.Data;
+import party.msdg.renova.database.column.Column;
+
+import java.util.List;
 
 /**
  * 数据表信息
@@ -32,4 +35,13 @@ public class Table {
      */
     private String remark;
 
+    /**
+     * 表记录数量
+     */
+    private int rows;
+
+    /**
+     * 表字段信息
+     */
+    private List<Column> columns;
 }

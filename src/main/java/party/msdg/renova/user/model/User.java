@@ -1,4 +1,4 @@
-package party.msdg.renova.user;
+package party.msdg.renova.user.model;
 
 import lombok.Data;
 

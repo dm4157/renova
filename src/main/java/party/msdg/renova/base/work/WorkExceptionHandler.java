@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import party.msdg.renova.base.Re;
 import party.msdg.renova.toolkit.Trick;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static party.msdg.renova.base.work.WorkContext.*;
@@ -24,6 +27,22 @@ import static party.msdg.renova.base.work.WorkContext.*;
 @RestControllerAdvice
 public class WorkExceptionHandler extends ResponseEntityExceptionHandler {
     private final WorkLog log = Work.getLogger(WorkExceptionHandler.class);
+
+    @ExceptionHandler(value = MethodArgumentNotValidException.class, produces = "application/json")
+    public ResponseEntity<Map<String, Object>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", 400);
+        result.put("message", "参数校验失败");
+
+        BindingResult bindingResult = ex.getBindingResult();
+        Map<String, String> errors = new HashMap<>();
+        for (FieldError fieldError : bindingResult.getFieldErrors()) {
+            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
+        }
+        result.put("errors", errors);
+
+        return ResponseEntity.badRequest().body(result);
+    }
 
     @ExceptionHandler(WorkException.class)
     public final ResponseEntity<Object> handWork(Exception ex, WebRequest request) {

@@ -11,8 +11,16 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.stereotype.Component;
 import party.msdg.renova.base.work.Work;
 
+/**
+ * 驱动数据库工作，同数据库沟通的底层对象
+ *
+ * @author   Mr.Ten
+ * @summary  数据库驱动
+ * @since 2025/6/16 16:12
+ */
 @Component
 public class Driver {
+
     /**
      * 测试数据源是否可以建立链接
      */

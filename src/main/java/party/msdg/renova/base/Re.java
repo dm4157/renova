@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * Wow! Sweet moon.
- * 东硕定义返回结果
+ * 定义返回结果
  */
 @Data
 public class Re<T> {

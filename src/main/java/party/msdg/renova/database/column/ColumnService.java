@@ -20,8 +20,6 @@ public class ColumnService {
 
     @Autowired
     private ValueConfigService valueConfigService;
-    @Autowired
-    private TableService tableService;
 
     /**
      * 批量新增字段信息
@@ -35,15 +33,13 @@ public class ColumnService {
 
     /**
      * 数据表下的字段信息。包含字段基本信息和数据生成信息
-     * @param sourceId      数据源id
-     * @param tableName     表名
      */
-    public List<Column> tableColumns(int sourceId, String tableName) {
-        Table table = tableService.one(sourceId, tableName);
-        List<Column> columns = columnDao.tableColumns(sourceId, tableName);
+    public List<Column> tableColumns(Table table) {
+        List<Column> columns = columnDao.tableColumns(table.getSourceId(), table.getName());
         List<ValueConfig> configs = valueConfigService.all(Codes.PARAM_TYPE_TABLE, table.getId());
-        Map<Integer, ValueConfig> configMap = configs.stream().collect(Collectors.toMap(ValueConfig::getId, one -> one));
 
+        // 注入mock配置？？
+        Map<Integer, ValueConfig> configMap = configs.stream().collect(Collectors.toMap(ValueConfig::getId, one -> one));
         columns.forEach(one -> one.setValueConfig(configMap.getOrDefault(one.getId(), null)));
         return columns;
     }

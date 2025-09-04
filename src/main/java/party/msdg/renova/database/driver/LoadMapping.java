@@ -23,6 +23,7 @@ public interface LoadMapping {
     @Select("select\n" +
             "  table_name as name,\n" +
             "  table_comment as remark " +
+            "  table_rows as rows " +
             "from information_schema.tables\n" +
             "where table_schema = #{dbName}")
     List<Table> allTablesForMysql(@Param("dbName") String dbName);

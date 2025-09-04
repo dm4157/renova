@@ -75,7 +75,10 @@ public class Loader {
         tableService.batchAdd(source.getId(), tables);
         logger.tag("loadDB").debug("load table {}", tables.size());
 
+        // 添加tableId
         List<Column> columns = loadColumn(source);
+        
+
         columnService.batchAdd(source.getId(), columns);
         logger.tag("loadDB").debug("load column {}", columns.size());
 

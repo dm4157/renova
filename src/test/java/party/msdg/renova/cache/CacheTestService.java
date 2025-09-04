@@ -3,7 +3,7 @@ package party.msdg.renova.cache;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import party.msdg.renova.base.work.WorkLog;
-import party.msdg.renova.user.User;
+import party.msdg.renova.user.model.User;
 
 @Service
 public class CacheTestService {
